@@ -5,10 +5,11 @@ sonar.projectKey={{.Key}}
 sonar.projectName={{.Name}}
 sonar.projectVersion={{.Version}}
 sonar.sources={{.Sources}}
-sonar.inclusions={{.Inclusions}}
-sonar.exclusions={{.Exclusions}}
-sonar.language={{.Language}}
-sonar.profile={{.Profile}}
 sonar.sourceEncoding={{.Encoding}}
-sonar.javascript.lcov.reportPath={{.LcovPath}}
 sonar.branch={{.BranchOut}}
+{{if .Inclusions}}
+sonar.inclusions={{.Inclusions}}
+{{end}}
+{{if .Exclusions}}
+sonar.exclusions={{.Exclusions}}
+{{end}}

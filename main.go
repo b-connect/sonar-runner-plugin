@@ -115,12 +115,6 @@ func main() {
 			Usage:  "Print generated config - debug purposes",
 			EnvVar: "PLUGIN_DEBUG",
 		},
-		cli.StringFlag{
-			Name:   "allowed.branch.regex",
-			Usage:  "A regex to check against running branch to see if analysis is allowed",
-			EnvVar: "PLUGIN_ALLOWED_BRANCH_REGEX",
-			Value:  `(^master$|^develop$|^release\/+)`,
-		},
 	}
 
 	if err := app.Run(os.Args); err != nil {
@@ -151,7 +145,6 @@ func run(c *cli.Context) error {
 		Repo:        c.String("repo.name"),
 		Default:     c.String("repo.branch"),
 		Branch:      c.String("commit.branch"),
-		BranchRegex: c.String("allowed.branch.regex"),
 	}
 
 	return plugin.Exec()

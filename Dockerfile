@@ -12,6 +12,6 @@ RUN apk update && \
     ca-certificates && \
   rm -rf /var/cache/apk/*
 
-ADD sonar-runner-plugin /bin/
+ADD sonar-runner /bin/
 ADD sonar-runner.properties.tmpl /opt/sonar/conf/sonar-runner.properties.tmpl
-ENTRYPOINT ["/bin/sonar-runner-plugin"]
+ENTRYPOINT ["/bin/sonar-runner"]

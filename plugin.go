@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"regexp"
 	"strings"
 	"text/template"
 
@@ -65,19 +64,9 @@ func (p *Plugin) Exec() error {
 
 func (p Plugin) branchAllowed() (error, bool) {
 
-	re, err := regexp.Compile(p.BranchRegex)
-	if err != nil {
-		fmt.Printf("There is a problem with the provided Branch Regexp.\n")
-		return err, false
-	}
-	if re.MatchString(p.Branch) == true {
-		fmt.Printf("Branch %s allowed - executing sonar analysis.\n", p.Branch)
-		p.BranchOut = strings.Replace(re.FindString(p.Branch), "/", "", -1) // save Branch name without / (when release)
-		return nil, true
-	} else {
-		fmt.Printf("Branch %s not allowed - skiping analysis\n", p.Branch)
-		return nil, false
-	}
+	fmt.Printf("Branch %s allowed - executing sonar analysis.\n", p.Branch)
+	p.BranchOut = p.Branch; // save Branch name without / (when release)
+	return nil, true
 }
 
 func (p Plugin) buildRunnerProperties() error {
