@@ -3,7 +3,7 @@ workspace:
 
 pipeline:
   test:
-    image: golang:1.6
+    image: golang:1.8
     environment:
       - CGO_ENABLED=0
     commands:
@@ -13,8 +13,8 @@ pipeline:
 
   latest:
     image: docker
-    repo: ypcloud/sonar-runner
-    tags: [ "latest", "1.0", "1" ]
+    repo: bconnect/sonar-runner
+    tags: [ "latest" ]
     when:
       branch: master
       event: push

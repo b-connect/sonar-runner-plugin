@@ -25,6 +25,8 @@ _testmain.go
 .env
 
 coverage.out
-sonar-runner-plugin
+sonar-runner
 .idea/
 *.iml
+.vscode
+build-and-push.sh
